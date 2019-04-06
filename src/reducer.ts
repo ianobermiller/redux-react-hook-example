@@ -1,6 +1,13 @@
 import {Action, IState} from './Store';
 
-export default function reducer(state: IState, action: Action) {
+export default function reducer(
+  state: IState | null | undefined,
+  action: Action,
+) {
+  if (!state) {
+    return null;
+  }
+
   switch (action.type) {
     case 'add todo': {
       return {
